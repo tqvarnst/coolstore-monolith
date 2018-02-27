@@ -10,7 +10,7 @@ import javax.jms.TextMessage;
 
 import com.redhat.coolstore.model.Order;
 import com.redhat.coolstore.utils.Transformers;
-import weblogic.i18n.logging.NonCatalogLogger;
+import java.util.logging.Logger;
 
 @MessageDriven(name = "OrderServiceMDB", activationConfig = {
 	@ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "topic/orders"),
@@ -24,7 +24,7 @@ public class OrderServiceMDB implements MessageListener {
 	@Inject
 	CatalogService catalogService;
 
-	private NonCatalogLogger log = new NonCatalogLogger(OrderServiceMDB.class.getName());
+	private Logger log = Logger.getLogger(OrderServiceMDB.class.getName());
 
 	@Override
 	public void onMessage(Message rcvMessage) {
